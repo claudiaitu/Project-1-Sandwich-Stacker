@@ -7,7 +7,7 @@ const kitchenImage = new Image ()
 kitchenImage.src = "../images/kitchen.jpg"
 
 const characterImage = new Image()
-characterImage.src = "../images/character.png"
+characterImage.src = "../images/FINALcharacter.png"
 
 const baconImage = new Image() 
 baconImage.src = "../images/bacon.png"
@@ -78,5 +78,18 @@ window.onload = function () {
     };
 
 };
+
+document.addEventListener('keydown', e => {
+    switch (e.keyCode) {
+      case 37:
+        player.moveLeft();
+        // console.log('left', player);
+        break;
+      case 39:
+        player.moveRight();
+        // console.log('right', player);
+        break;
+    } 
+});
 
 }
