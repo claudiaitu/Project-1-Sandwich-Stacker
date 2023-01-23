@@ -4,43 +4,43 @@ const ctx = canvas.getContext('2d')
 const logo = document.getElementById("logo-img")
 
 const kitchenImage = new Image ()
-kitchenImage.src = "/images/images/kitchen.jpg"
+kitchenImage.src = "../images/kitchen.jpg"
 
 const characterImage = new Image()
-characterImage.src = "/images/images/character.png"
+characterImage.src = "../images/character.png"
 
 const baconImage = new Image() 
-baconImage.src = "/images/images/bacon.png"
+baconImage.src = "../images/bacon.png"
 
 const breadImage = new Image ()
-breadImage.src = "/images/images/bread-slice.png"
+breadImage.src = "../images/bread-slice.png"
 
 const cheeseImage = new Image ()
-cheeseImage.src = "/images/images/cheese-slice.png"
+cheeseImage.src = "../images/cheese-slice.png"
 
 const deliMeatImage = new Image ()
-deliMeatImage.src = "/images/images/deli-meat.png"
+deliMeatImage.src = "../images/deli-meat.png"
 
 const lettuceImage = new Image()
-lettuceImage.src = "/images/images/lettuce.png"
+lettuceImage.src = "../images/lettuce.png"
 
 const rottenBreadImage = new Image()
-rottenBreadImage.src = "/images/images/rotten-bread.png"
+rottenBreadImage.src = "../images/rotten-bread.png"
 
 const rottenCheeseImage = new Image()
-rottenCheeseImage.src = "/images/images/rotten-cheese.png"
+rottenCheeseImage.src = "../images/rotten-cheese.png"
 
 const rottenMeatImage = new Image()
-rottenMeatImage.src = "/images/images/rotten-meat.png"
+rottenMeatImage.src = "../images/rotten-meat.png"
 
 const rottenLettuceImage = new Image()
-rottenLettuceImage.src = "/images/images/rotten-lettuce.png"
+rottenLettuceImage.src = "../images/rotten-lettuce.png"
 
 const rottenTomatoImage = new Image()
-rottenTomatoImage.src = "/images/images/rotten-tomato.png"
+rottenTomatoImage.src = "../images/rotten-tomato.png"
 
 const veggiesImage = new Image()
-veggiesImage.src = "/images/images/veggies.png"
+veggiesImage.src = "../images/veggies.png"
 
 
 let gameOn = false;
@@ -54,14 +54,14 @@ function startGame() {
     gameOn = true
     CSSTransition.draw
 
-    logo.style.visibility = "hidden"
-    logo.style.height = "0px"
+    // logo.style.visibility = "hidden"
+    // logo.style.height = "0px"
     canvas.width = "650"
     canvas.height = "800"
     canvas.style.visibility = "visible"
 
     ctx.drawImage(kitchenImage, 0, 0, 650, 800)
-    ctx.drawImage(characterImage, 400, 200, 75, 50)
+    ctx.drawImage(characterImage, 400, 700, 200, 100)
 }
 
 function updateCanvas() {
