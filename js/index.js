@@ -11,6 +11,9 @@ characterImage.src = "../images/FINALcharacter.png"
 
 const baconImage = new Image() 
 baconImage.src = "../images/newbacon.png"
+baconImage.alt = "rotten"
+console.log(baconImage)
+console.log(baconImage.alt)
 
 const breadImage = new Image ()
 breadImage.src = "../images/bread-slice.png"
@@ -50,15 +53,15 @@ let animationLoopId;
 
 // let gameOn = false;
 
-// let score= 0;
+let score= 0;
 
 
 class Obstacles {
     constructor() {
         this.x = Math.random() * 400,
         this.y = 0,
-        this.width = Math.floor(Math.random() * 150)
-        this.height = 20
+        this.width = 50
+        this.height = 50
         this.image = imageArray[Math.floor(Math.random() * imageArray.length)] 
     }
     
@@ -67,24 +70,25 @@ class Obstacles {
     }
 
     draw() {
-        ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
+        ctx.drawImage(this.image.src, this.x, this.y, 50, 50)
         // ctx.drawImage(breadImage, this.x, this.y, this.width, this.height)
 
     }
 }
 
 var imageArray = new Array();
-imageArray[0] = baconImage;
-imageArray[1] = breadImage;
-imageArray[2] = cheeseImage;
-imageArray[3] = deliMeatImage;
-imageArray[4] = lettuceImage;
-imageArray[5] = rottenBreadImage;
-imageArray[6] = rottenCheeseImage;
-imageArray[7] = rottenMeatImage;
-imageArray[8] = rottenLettuceImage;
-imageArray[9] = rottenTomatoImage;
-imageArray[10] = veggiesImage;
+imageArray[0] = {src: baconImage, 
+                        points: -1};
+// imageArray[1] = breadImage;
+// imageArray[2] = cheeseImage;
+// imageArray[3] = deliMeatImage;
+// imageArray[4] = lettuceImage;
+// imageArray[5] = rottenBreadImage;
+// imageArray[6] = rottenCheeseImage;
+// imageArray[7] = rottenMeatImage;
+// imageArray[8] = rottenLettuceImage;
+// imageArray[9] = rottenTomatoImage;
+// imageArray[10] = veggiesImage;
 
 
 
@@ -92,8 +96,9 @@ const player = {
 
     x: startingX,
     y: startingY,
-    // width: 50,
-    // height: 100,
+    width: 60,
+    height: 130,
+    stack: [],
   
     draw: function() {
       ctx.drawImage(characterImage, this.x, this.y, 200, 130)
@@ -119,29 +124,49 @@ const player = {
         
 //     })
 // }
+let obstaclesArray = []
 
-function checkCollision (obstacle) {
+function checkCollision (obstacle, i) {
     
     if (player.y < obstacle.y + + obstacle.height 
         && obstacle.y < player.y + player.height 
         && obstacle.x < player.x + player.width 
         & obstacle.x + obstacle.width > player.x) {
-          gameOver()
-} }
+            if (obstacle.image.points > 0) {
+                player.stack.push(obstacle)
+                obstaclesArray.splice(i, 1)
+                score++
+                console.log("Colliding")  
+            }
+} 
 
-let obstaclesArray = []
+}
 
-// function creaeObstacle() {
+
+function createObstacle() {
     foodsIntervalId = setInterval(() => {
-        console.log(new Obstacles())
+        console.log(player.stack, "this is the player stack")
+        console.log(obstaclesArray)
         obstaclesArray.push(new Obstacles())
-    }, 2000)
+    }, 2500)
+}
 
+let obstacleTest = new Obstacles() 
+console.log(obstacleTest)
 
 function animationLoop() {
     animationId = setInterval(() => {
         updateCanvas()
-    }, 16)
+    }, 11)
+}
+
+function showScore() {
+    ctx.fillStyle = "#1E90FF"
+    ctx.fillRect(480, 10, 150, 75)
+
+    ctx.fillStyle = "white"
+    ctx.font = '18px serif'
+    ctx.fillText(`Score: ${score}`, 500, 50)
 }
 
 
@@ -152,13 +177,18 @@ function updateCanvas() {
     ctx.drawImage(kitchenImage, 0, 0, 650, 800)
 
     
+    
     player.draw()
-    obstaclesArray.forEach((currentElement) => {
-        
+    obstaclesArray.forEach((currentElement, i) => {
+       
+        checkCollision(currentElement, i) 
         currentElement.draw() 
         currentElement.y += 1
-
-})}
+        
+    })
+    
+    showScore()
+}
 
 
 function startGame() {
@@ -179,8 +209,9 @@ function startGame() {
 
     ctx.drawImage(kitchenImage, 0, 0, 650, 800)
     player.draw()
+    showScore()
     animationLoop() 
-    // creaeObstacle()
+    createObstacle()
     // ctx.drawImage(characterImage, 400, 700, 200, 100)
 }
 
