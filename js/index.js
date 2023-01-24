@@ -1,4 +1,4 @@
-const canvas = document.getElementById("my-canvas")
+const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext('2d')
 
 const logo = document.getElementById("logo-img")
@@ -42,54 +42,112 @@ rottenTomatoImage.src = "../images/rotten-tomato.png"
 const veggiesImage = new Image()
 veggiesImage.src = "../images/veggies.png"
 
+const startingX = canvas.width/2 - 25
+const startingY = canvas.height - 125
 
-let gameOn = false;
+// let intervalId;
+// let animationId;
 
-let score= 0;
+// let gameOn = false;
+
+// let score= 0;
 
 
-function startGame() {
-    // console.log("Starting")
+// class Obstacles {
+//     constructor() {
+//         this.x = Math.random() * 800,
+//         this.y = 0,
+//         this.width = 20 + Math.floor(Math.random() * 350)
+//         this.height = 20
+//     }
+    
+//     newPosition() {
+//         this.y++
+//     }
+// }
 
-    gameOn = true
-    CSSTransition.draw
+const player = {
 
-    // logo.style.visibility = "hidden"
-    // logo.style.height = "0px"
-    canvas.width = "650"
-    canvas.height = "800"
-    canvas.style.visibility = "visible"
-
-    ctx.drawImage(kitchenImage, 0, 0, 650, 800)
-    ctx.drawImage(characterImage, 400, 700, 200, 100)
+    x: startingX,
+    y: startingY,
+    // width: 50,
+    // height: 100,
+  
+    draw: function() {
+      ctx.drawImage(characterImage, this.x, this.y, 200, 100)
+    },
+  
+    moveLeft: function() {
+      this.x = this.x - 5
+    },
+  
+    moveRight: function() {
+      this.x = this.x + 5
+      console.log(this.x)
+      if (this.x > canvas.width) {
+        this.x -= 20
+      }    },
 }
+
+// function animationLoop() {
+//     intervalId = setInterval(() => {
+        
+//     })
+// }
 
 function updateCanvas() {
     ctx.clearRect(0,0,650,800)
 
     ctx.drawImage(kitchenImage, 0, 0, 650, 800)
 
+    player.draw()
 }
 
-window.onload = function () {
-    document.getElementById("start-button").onclick = () => {
-        if (gameOn === false) {
+
+function startGame() {
+    console.log("Starting")
+
+    // gameOn = true
+    // player.x = startingX
+    // player.y = startingY
+    // CSSTransition.draw
+
+
+    // // logo.style.visibility = "hidden"
+    // // logo.style.height = "0px"
+    // canvas.width = "650"
+    // canvas.height = "800"
+    // canvas.style.visibility = "visible"
+
+    ctx.drawImage(kitchenImage, 0, 0, 650, 800)
+    player.draw()
+    // animationLoop() 
+    // ctx.drawImage(characterImage, 400, 700, 200, 100)
+}
+
+
+
+window.onload = () => {
+    document.getElementById('start-button').onclick = () => {
+        // if (gameOn === false) {
         startGame();
     };
 
-};
+
 
 document.addEventListener('keydown', e => {
     switch (e.keyCode) {
       case 37:
         player.moveLeft();
-        // console.log('left', player);
+        console.log('left', player);
         break;
       case 39:
         player.moveRight();
-        // console.log('right', player);
+        console.log('right', player);
         break;
     } 
+
+    updateCanvas()
 });
 
 }
