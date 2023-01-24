@@ -4,7 +4,7 @@ const ctx = canvas.getContext('2d')
 const logo = document.getElementById("logo-img")
 
 const kitchenImage = new Image ()
-kitchenImage.src = "../images/kitchen.jpg"
+kitchenImage.src = "../images/newKitchen.jpg"
 
 const characterImage = new Image()
 characterImage.src = "../images/FINALcharacter.png"
@@ -45,26 +45,35 @@ veggiesImage.src = "../images/veggies.png"
 const startingX = canvas.width/2 - 25
 const startingY = canvas.height - 125
 
-// let intervalId;
-// let animationId;
+let foodsIntervalId;
+let animationLoopId;
 
 // let gameOn = false;
 
 // let score= 0;
 
 
-// class Obstacles {
-//     constructor() {
-//         this.x = Math.random() * 800,
-//         this.y = 0,
-//         this.width = 20 + Math.floor(Math.random() * 350)
-//         this.height = 20
-//     }
+class Obstacles {
+    constructor() {
+        this.x = Math.random() * 800,
+        this.y = 0,
+        this.width = 20 + Math.floor(Math.random() * 350)
+        this.height = 20
+        // this.image = (array)Math.floor(Math.random() * 350 random/length of array
+    }
     
-//     newPosition() {
-//         this.y++
-//     }
-// }
+    newPosition() {
+        this.y++
+    }
+
+    draw() {
+        ctx.drawImage(baconImage, this.x, this.y, this.width, this.height)
+        // ctx.drawImage(breadImage, this.x, this.y, this.width, this.height)
+
+    }
+}
+
+// images array
 
 const player = {
 
@@ -74,18 +83,21 @@ const player = {
     // height: 100,
   
     draw: function() {
-      ctx.drawImage(characterImage, this.x, this.y, 200, 100)
+      ctx.drawImage(characterImage, this.x, this.y, 200, 130)
     },
   
     moveLeft: function() {
       this.x = this.x - 5
+      if (this.x < 0) {
+        this.x += 5
+      }
     },
   
     moveRight: function() {
       this.x = this.x + 5
       console.log(this.x)
-      if (this.x > canvas.width) {
-        this.x -= 20
+      if (this.x + 200 > canvas.width) {
+        this.x -= 5
       }    },
 }
 
@@ -95,22 +107,55 @@ const player = {
 //     })
 // }
 
+function checkCollision (obstacle) {
+    
+    if (player.y < obstacle.y + + obstacle.height 
+        && obstacle.y < player.y + player.height 
+        && obstacle.x < player.x + player.width 
+        & obstacle.x + obstacle.width > player.x) {
+          gameOver()
+} }
+
+let obstaclesArray = []
+
+// function creaeObstacle() {
+    foodsIntervalId = setInterval(() => {
+        console.log(new Obstacles())
+        obstaclesArray.push(new Obstacles())
+    }, 2000)
+
+
+function animationLoop() {
+    animationId = setInterval(() => {
+        updateCanvas()
+    }, 16)
+}
+
+
+
 function updateCanvas() {
     ctx.clearRect(0,0,650,800)
 
     ctx.drawImage(kitchenImage, 0, 0, 650, 800)
 
+    
     player.draw()
-}
+    obstaclesArray.forEach((currentElement) => {
+        
+        currentElement.draw() 
+        currentElement.y += 1
+
+})}
 
 
 function startGame() {
     console.log("Starting")
 
-    // gameOn = true
-    // player.x = startingX
-    // player.y = startingY
-    // CSSTransition.draw
+    gameOn = true
+    // obstaclesArray = []
+    player.x = startingX
+    player.y = startingY
+    CSSTransition.draw
 
 
     // // logo.style.visibility = "hidden"
@@ -121,9 +166,12 @@ function startGame() {
 
     ctx.drawImage(kitchenImage, 0, 0, 650, 800)
     player.draw()
-    // animationLoop() 
+    animationLoop() 
+    // creaeObstacle()
     // ctx.drawImage(characterImage, 400, 700, 200, 100)
 }
+
+
 
 
 

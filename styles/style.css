@@ -21,7 +21,7 @@ body {
 }
 
 .arrows-img {
-    width: 300px;
+    width: 250px;
 }
 
 body button {
@@ -33,7 +33,7 @@ body button {
     border: #DAA520 solid;
     box-shadow: 0;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #game-board {
