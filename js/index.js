@@ -10,7 +10,7 @@ const characterImage = new Image()
 characterImage.src = "../images/FINALcharacter.png"
 
 const baconImage = new Image() 
-baconImage.src = "../images/bacon.png"
+baconImage.src = "../images/newbacon.png"
 
 const breadImage = new Image ()
 breadImage.src = "../images/bread-slice.png"
@@ -55,11 +55,11 @@ let animationLoopId;
 
 class Obstacles {
     constructor() {
-        this.x = Math.random() * 800,
+        this.x = Math.random() * 400,
         this.y = 0,
-        this.width = 20 + Math.floor(Math.random() * 350)
+        this.width = Math.floor(Math.random() * 150)
         this.height = 20
-        // this.image = (array)Math.floor(Math.random() * 350 random/length of array
+        this.image = imageArray[Math.floor(Math.random() * imageArray.length)] 
     }
     
     newPosition() {
@@ -67,13 +67,26 @@ class Obstacles {
     }
 
     draw() {
-        ctx.drawImage(baconImage, this.x, this.y, this.width, this.height)
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
         // ctx.drawImage(breadImage, this.x, this.y, this.width, this.height)
 
     }
 }
 
-// images array
+var imageArray = new Array();
+imageArray[0] = baconImage;
+imageArray[1] = breadImage;
+imageArray[2] = cheeseImage;
+imageArray[3] = deliMeatImage;
+imageArray[4] = lettuceImage;
+imageArray[5] = rottenBreadImage;
+imageArray[6] = rottenCheeseImage;
+imageArray[7] = rottenMeatImage;
+imageArray[8] = rottenLettuceImage;
+imageArray[9] = rottenTomatoImage;
+imageArray[10] = veggiesImage;
+
+
 
 const player = {
 
