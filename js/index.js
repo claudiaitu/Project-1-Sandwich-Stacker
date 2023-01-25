@@ -215,6 +215,33 @@ function startGame() {
     // ctx.drawImage(characterImage, 400, 700, 200, 100)
 }
 
+function gameOver() {
+    gameOn = false
+    console.log("Game Over")
+    
+    clearInterval(animationId)
+    clearInterval(foodsIntervalId)
+
+    ctx.clearRect(0,0,650,800)
+    ctx.fillStyle = 'grey'
+    ctx.fillRect(0,0,650,800)
+
+    if (score > 9) {
+        ctx.fillStyle= "white"
+        ctx.font = '40px serif'
+        ctx.fillText("You Won!!!", 150, 200)
+    } else {
+        ctx.fillStyle= "white"
+        ctx.font = '40px serif'
+        ctx.fillText("You Lose! Game Over", 150, 200)
+    }
+
+    // obstaclesArray = []
+    // score = 0
+
+    }
+
+
 
 
 
