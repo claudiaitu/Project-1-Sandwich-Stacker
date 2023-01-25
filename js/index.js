@@ -188,6 +188,8 @@ function checkCollision (obstacle, i) {
                 // console.log("Colliding")  
 
                 console.log(score, "this is the score")
+
+            
             // }
 } 
 
@@ -199,7 +201,7 @@ function createObstacle() {
         console.log(player.stack, "this is the player stack")
         console.log(obstaclesArray)
         obstaclesArray.push(new Obstacles())
-    }, 2500)
+    }, 3000)
 }
 
 let obstacleTest = new Obstacles() 
@@ -247,6 +249,7 @@ function updateCanvas() {
         
     })
     showScore()
+  
 }
 
 
@@ -299,9 +302,6 @@ function gameOver() {
     // score = 0
 
     }
-
-
-
 
 
 
