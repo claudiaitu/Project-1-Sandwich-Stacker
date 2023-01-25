@@ -17,33 +17,63 @@ console.log(baconImage.alt)
 
 const breadImage = new Image ()
 breadImage.src = "../images/bread-slice.png"
+breadImage.alt = 1
+console.log(breadImage)
+console.log(breadImage.alt)
 
 const cheeseImage = new Image ()
 cheeseImage.src = "../images/cheese-slice.png"
+cheeseImage.alt = 1
+console.log(cheeseImage)
+console.log(cheeseImage.alt)
 
 const deliMeatImage = new Image ()
 deliMeatImage.src = "../images/deli-meat.png"
+deliMeatImage.alt = 1
+console.log(deliMeatImage)
+console.log(deliMeatImage.alt)
 
 const lettuceImage = new Image()
 lettuceImage.src = "../images/lettuce.png"
+lettuceImage.alt = 1
+console.log(lettuceImage)
+console.log(lettuceImage.alt)
 
 const rottenBreadImage = new Image()
 rottenBreadImage.src = "../images/rotten-bread.png"
+rottenBreadImage.alt = -1
+console.log(rottenBreadImage)
+console.log(rottenBreadImage.alt)
 
 const rottenCheeseImage = new Image()
 rottenCheeseImage.src = "../images/rotten-cheese.png"
+rottenCheeseImage.alt = -1
+console.log(rottenCheeseImage)
+console.log(rottenCheeseImage.alt)
 
 const rottenMeatImage = new Image()
 rottenMeatImage.src = "../images/rotten-meat.png"
+rottenMeatImage.alt = -1
+console.log(rottenMeatImage)
+console.log(rottenMeatImage.alt)
 
 const rottenLettuceImage = new Image()
 rottenLettuceImage.src = "../images/rotten-lettuce.png"
+rottenLettuceImage.alt = -1
+console.log(rottenLettuceImage)
+console.log(rottenLettuceImage.alt)
 
 const rottenTomatoImage = new Image()
 rottenTomatoImage.src = "../images/rotten-tomato.png"
+rottenTomatoImage.alt = -1
+console.log(rottenTomatoImage)
+console.log(rottenTomatoImage.alt)
 
 const veggiesImage = new Image()
 veggiesImage.src = "../images/veggies.png"
+veggiesImage.alt = 1
+console.log(veggiesImage)
+console.log(veggiesImage.alt)
 
 const startingX = canvas.width/2 - 25
 const startingY = canvas.height - 125
@@ -51,7 +81,7 @@ const startingY = canvas.height - 125
 let foodsIntervalId;
 let animationLoopId;
 
-// let gameOn = false;
+let gameOn = false;
 
 let score= 0;
 
@@ -77,18 +107,17 @@ class Obstacles {
 }
 
 var imageArray = new Array();
-imageArray[0] = baconImage 
-
-// imageArray[1] = breadImage;
-// imageArray[2] = cheeseImage;
-// imageArray[3] = deliMeatImage;
-// imageArray[4] = lettuceImage;
-// imageArray[5] = rottenBreadImage;
-// imageArray[6] = rottenCheeseImage;
-// imageArray[7] = rottenMeatImage;
-// imageArray[8] = rottenLettuceImage;
-// imageArray[9] = rottenTomatoImage;
-// imageArray[10] = veggiesImage;
+imageArray[0] = baconImage; 
+imageArray[1] = breadImage;
+imageArray[2] = cheeseImage;
+imageArray[3] = deliMeatImage;
+imageArray[4] = lettuceImage;
+imageArray[5] = rottenBreadImage;
+imageArray[6] = rottenCheeseImage;
+imageArray[7] = rottenMeatImage;
+imageArray[8] = rottenLettuceImage;
+imageArray[9] = rottenTomatoImage;
+imageArray[10] = veggiesImage;
 
 
 
@@ -278,10 +307,10 @@ function gameOver() {
 
 window.onload = () => {
     document.getElementById('start-button').onclick = () => {
-        // if (gameOn === false) {
+        if (gameOn === false) {
         startGame();
     };
-
+    }
 
 
 document.addEventListener('keydown', e => {
