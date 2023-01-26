@@ -15,6 +15,9 @@ stitchAndLiloImage.src = "images/Reuben-and-Lilo-e1585687285862.avif"
 const winningStitch = new Image()
 winningStitch.src = "images/happy-625-reuben-day-our-favorite-lazy-yellow-sandwich-boy-v0-qxdcqotubu791.webp"
 
+const themeSong = new Audio()
+themeSong.src = "tomp3.cc - Disney Channel  Lilo  Stitch 625 Sandwich Stacker  Main Theme (1).mp3"
+
 const baconImage = new Image() 
 baconImage.src = "images/newbacon.png"
 baconImage.alt = 1
@@ -304,6 +307,8 @@ function startGame() {
     showScore()
     animationLoop() 
     createObstacle()
+    themeSong.play()
+
     // ctx.drawImage(characterImage, 400, 700, 200, 100)
 }
 
