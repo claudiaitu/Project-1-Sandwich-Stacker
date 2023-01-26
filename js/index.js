@@ -12,6 +12,9 @@ characterImage.src = "../images/FINALcharacter.png"
 const stitchAndLiloImage = new Image()
 stitchAndLiloImage.src = "../images/Reuben-and-Lilo-e1585687285862.avif"
 
+const winningStitch = new Image()
+winningStitch.src = "../images/happy-625-reuben-day-our-favorite-lazy-yellow-sandwich-boy-v0-qxdcqotubu791.webp"
+
 const baconImage = new Image() 
 baconImage.src = "../images/newbacon.png"
 baconImage.alt = 1
@@ -193,9 +196,6 @@ function checkCollision (obstacle, i) {
                 // console.log("Colliding")  
 
                 // console.log(score, "this is the score")
-
-
-                // conditional here???
             
             }
 
@@ -240,7 +240,7 @@ function showScore() {
     ctx.fillRect(480, 100, 150, 50)
     ctx.fillStyle = "white"
     ctx.font = '18px serif'
-    ctx.fillText(`Ick: ${ickMeter}`, 500, 130)
+    ctx.fillText(`Ick Meter: ${ickMeter}`, 500, 130)
 }
 
 
@@ -315,13 +315,14 @@ function gameOver() {
     clearInterval(foodsIntervalId)
 
     ctx.clearRect(0,0,650,800)
-    ctx.fillStyle = 'grey'
+    ctx.fillStyle = '#8FBC8F'
     ctx.fillRect(0,0,650,800)
 
     if (score > 5) {
         ctx.fillStyle= "white"
         ctx.font = '40px serif'
-        ctx.fillText("You Won!!!", 150, 200)
+        ctx.fillText("You Won!!!", 240, 200)
+        ctx.drawImage(winningStitch, 170, 250, 300, 300)
     } else {
         console.log("You lose")
         ctx.fillStyle= "white"
@@ -330,9 +331,8 @@ function gameOver() {
         ctx.drawImage(stitchAndLiloImage, 140, 250, 400, 200)
     }
 
-
-    // conditional statement here?????????
     obstaclesArray = []
+    player.stack = []
     score = 0
     ickMeter = 0
 
@@ -349,6 +349,8 @@ window.onload = () => {
 
 
 document.addEventListener('keydown', e => {
+
+    
     switch (e.keyCode) {
       case 37:
         player.moveLeft();
@@ -360,7 +362,7 @@ document.addEventListener('keydown', e => {
         break;
     } 
 
-    updateCanvas()
+    // updateCanvas()
 });
 
 }
