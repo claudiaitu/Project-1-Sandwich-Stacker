@@ -4,79 +4,79 @@ const ctx = canvas.getContext('2d')
 const logo = document.getElementById("logo-img")
 
 const kitchenImage = new Image ()
-kitchenImage.src = "../images/newKitchen.jpg"
+kitchenImage.src = "images/newKitchen.jpg"
 
 const characterImage = new Image()
-characterImage.src = "../images/FINALcharacter.png"
+characterImage.src = "images/FINALcharacter.png"
 
 const stitchAndLiloImage = new Image()
-stitchAndLiloImage.src = "../images/Reuben-and-Lilo-e1585687285862.avif"
+stitchAndLiloImage.src = "images/Reuben-and-Lilo-e1585687285862.avif"
 
 const winningStitch = new Image()
-winningStitch.src = "../images/happy-625-reuben-day-our-favorite-lazy-yellow-sandwich-boy-v0-qxdcqotubu791.webp"
+winningStitch.src = "images/happy-625-reuben-day-our-favorite-lazy-yellow-sandwich-boy-v0-qxdcqotubu791.webp"
 
 const baconImage = new Image() 
-baconImage.src = "../images/newbacon.png"
+baconImage.src = "images/newbacon.png"
 baconImage.alt = 1
 console.log(baconImage)
 console.log(baconImage.alt)
 
 const breadImage = new Image ()
-breadImage.src = "../images/bread-slice.png"
+breadImage.src = "images/bread-slice.png"
 breadImage.alt = 1
 console.log(breadImage)
 console.log(breadImage.alt)
 
 const cheeseImage = new Image ()
-cheeseImage.src = "../images/cheese-slice.png"
+cheeseImage.src = "images/cheese-slice.png"
 cheeseImage.alt = 1
 console.log(cheeseImage)
 console.log(cheeseImage.alt)
 
 const deliMeatImage = new Image ()
-deliMeatImage.src = "../images/deli-meat.png"
+deliMeatImage.src = "images/deli-meat.png"
 deliMeatImage.alt = 1
 console.log(deliMeatImage)
 console.log(deliMeatImage.alt)
 
 const lettuceImage = new Image()
-lettuceImage.src = "../images/lettuce.png"
+lettuceImage.src = "images/lettuce.png"
 lettuceImage.alt = 1
 console.log(lettuceImage)
 console.log(lettuceImage.alt)
 
 const rottenBreadImage = new Image()
-rottenBreadImage.src = "../images/rotten-bread.png"
+rottenBreadImage.src = "images/rotten-bread.png"
 rottenBreadImage.alt = -1
 console.log(rottenBreadImage)
 console.log(rottenBreadImage.alt)
 
 const rottenCheeseImage = new Image()
-rottenCheeseImage.src = "../images/rotten-cheese.png"
+rottenCheeseImage.src = "images/rotten-cheese.png"
 rottenCheeseImage.alt = -1
 console.log(rottenCheeseImage)
 console.log(rottenCheeseImage.alt)
 
 const rottenMeatImage = new Image()
-rottenMeatImage.src = "../images/rotten-meat.png"
+rottenMeatImage.src = "images/rotten-meat.png"
 rottenMeatImage.alt = -1
 console.log(rottenMeatImage)
 console.log(rottenMeatImage.alt)
 
 const rottenLettuceImage = new Image()
-rottenLettuceImage.src = "../images/rotten-lettuce.png"
+rottenLettuceImage.src = "images/rotten-lettuce.png"
 rottenLettuceImage.alt = -1
 console.log(rottenLettuceImage)
 console.log(rottenLettuceImage.alt)
 
 const rottenTomatoImage = new Image()
-rottenTomatoImage.src = "../images/rotten-tomato.png"
+rottenTomatoImage.src = "images/rotten-tomato.png"
 rottenTomatoImage.alt = -1
 console.log(rottenTomatoImage)
 console.log(rottenTomatoImage.alt)
 
 const veggiesImage = new Image()
-veggiesImage.src = "../images/veggies.png"
+veggiesImage.src = "images/veggies.png"
 veggiesImage.alt = 1
 console.log(veggiesImage)
 console.log(veggiesImage.alt)
