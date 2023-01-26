@@ -249,7 +249,7 @@ function showScore() {
 
 
 function updateCanvas() {
-    if (score > 5) {
+    if (score > 8) {
         gameOver()
         return
     }
