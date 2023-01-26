@@ -9,6 +9,9 @@ kitchenImage.src = "../images/newKitchen.jpg"
 const characterImage = new Image()
 characterImage.src = "../images/FINALcharacter.png"
 
+const stitchAndLiloImage = new Image()
+stitchAndLiloImage.src = "../images/Reuben-and-Lilo-e1585687285862.avif"
+
 const baconImage = new Image() 
 baconImage.src = "../images/newbacon.png"
 baconImage.alt = 1
@@ -76,7 +79,7 @@ console.log(veggiesImage)
 console.log(veggiesImage.alt)
 
 const startingX = canvas.width/2 - 25
-const startingY = canvas.height - 125
+const startingY = canvas.height - 100
 
 let foodsIntervalId;
 let animationLoopId;
@@ -84,6 +87,7 @@ let animationLoopId;
 let gameOn = false;
 
 let score= 0;
+let ickMeter = 0;
 
 
 class Obstacles {
@@ -179,18 +183,29 @@ function checkCollision (obstacle, i) {
         && obstacle.y < player.y + player.height 
         && obstacle.x < player.x + player.width 
         & obstacle.x + obstacle.width > player.x) {
-            // if (obstacle.image.points > 0) {
+
+            if (Number(obstacle.image.alt) > 0) {
                 player.stack.push(obstacle)
                 obstaclesArray.splice(i, 1)
-                console.log(obstacle.image.alt, "this is alt")
+                // console.log(obstacle.image.alt, "this is alt")
                 score += Number(obstacle.image.alt)
                 player.y -= 50
                 // console.log("Colliding")  
 
-                console.log(score, "this is the score")
+                // console.log(score, "this is the score")
 
+
+                // conditional here???
             
-            // }
+            }
+
+            if (Number(obstacle.image.alt) < 0) {
+                obstaclesArray.splice(i, 1)
+                player.stack.pop()
+                ickMeter += Number(obstacle.image.alt)
+                console.log("Ick", ickMeter)
+            }
+    
 } 
 
 }
@@ -201,7 +216,7 @@ function createObstacle() {
         console.log(player.stack, "this is the player stack")
         console.log(obstaclesArray)
         obstaclesArray.push(new Obstacles())
-    }, 3000)
+    }, 2000)
 }
 
 let obstacleTest = new Obstacles() 
@@ -220,11 +235,26 @@ function showScore() {
     ctx.fillStyle = "white"
     ctx.font = '18px serif'
     ctx.fillText(`Score: ${score}`, 500, 50)
+
+    ctx.fillStyle = "red"
+    ctx.fillRect(480, 100, 150, 50)
+    ctx.fillStyle = "white"
+    ctx.font = '18px serif'
+    ctx.fillText(`Ick: ${ickMeter}`, 500, 130)
 }
 
 
 
 function updateCanvas() {
+    if (score > 5) {
+        gameOver()
+        return
+    }
+
+    if (ickMeter < -2) {
+        gameOver()
+        return
+    }
     player.playerY() 
 
     ctx.clearRect(0,0,650,800)
@@ -288,18 +318,23 @@ function gameOver() {
     ctx.fillStyle = 'grey'
     ctx.fillRect(0,0,650,800)
 
-    if (score > 9) {
+    if (score > 5) {
         ctx.fillStyle= "white"
         ctx.font = '40px serif'
         ctx.fillText("You Won!!!", 150, 200)
     } else {
+        console.log("You lose")
         ctx.fillStyle= "white"
         ctx.font = '40px serif'
         ctx.fillText("You Lose! Game Over", 150, 200)
+        ctx.drawImage(stitchAndLiloImage, 140, 250, 400, 200)
     }
 
-    // obstaclesArray = []
-    // score = 0
+
+    // conditional statement here?????????
+    obstaclesArray = []
+    score = 0
+    ickMeter = 0
 
     }
 
